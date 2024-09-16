@@ -10,16 +10,32 @@ The stability of each model is quantified using the **Stability Coefficient**, c
 - **Compute** a single stability score for each model-task combination.
 
 ## Formula for Stability Coefficient
-The **Stability coefficient** is calculated using the cosine similarities between embeddings of responses. The formula is:
 
-\[ \text{Stability Coefficient} = \frac{\sum_{i \neq j} \text{similarity}_{ij} - n}{n \cdot (n - 1)} \]
+The Stability Coefficient is calculated using the cosine similarities between embeddings of responses. The formula for the Stability Coefficient is:
+
+$$
+\text{Stability Coefficient} = \frac{\sum_{i \neq j} \text{similarity}_{ij} - n}{n \cdot (n - 1)}
+$$
 
 where:
-- \(\text{similarity}_{ij}\) is the cosine similarity between the embeddings of response \(i\) and response \(j\).
-- \(n\) is the number of responses.
 
-The denominator \(n \cdot (n - 1)\) represents the number of unique pairs of responses.
+- \(\text{similarity}_{ij}\) is the cosine similarity between the embeddings of response \(R_i\) and response \(R_j\).
+- \(n\) is the number of prompt variations for each question (in this case, 10).
 
+The denominator \(n \cdot (n - 1)\) represents the number of unique pairs of responses. The condition \(i \neq j\) ensures that a response is not compared with itself.
+
+### Process
+
+1. **For each question:**
+   - Take the 10 different prompts and their corresponding model responses.
+   - Calculate the Stability Coefficient for this question using the formula above.
+
+2. **Calculate the overall Stability Coefficient:**
+   - Compute the mean of all question-specific Stability Coefficients to get the overall Stability Coefficient for the model.
+
+3. **Repeat this process for each model being evaluated.**
+
+   
 
 # Embedding Model
 We use the paraphrase-MiniLM-L6-v2 model from the Sentence-Transformers library for generating embeddings. This model is designed to create sentence embeddings that can be compared using cosine similarity.
