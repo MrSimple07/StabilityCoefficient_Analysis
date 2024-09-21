@@ -18,11 +18,12 @@ $$
 $$
 
 where:
-
+$$
 - \(\text{similarity}_{ij}\) is the cosine similarity between the embeddings of response \(R_i\) and response \(R_j\).
 - \(n\) is the number of prompt variations for each question (in this case, 10).
 - The denominator \(n \cdot (n - 1)\) represents the number of unique pairs of responses.
 - The condition \(i \neq j\) ensures that a response is not compared with itself.
+$$
   
 ### Process
 
