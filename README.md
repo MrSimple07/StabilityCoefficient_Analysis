@@ -55,6 +55,17 @@ The project evaluates four different models:
    
 Each model's response to prompt variations across the four tasks is analyzed in detail.
 
+# Dataset Information
+Each task in the project involves evaluating different models across four datasets:
+
+- **CheGeka**: The task contains questions from the game “What? Where? When?" and is a question-and-answer task with a free answer.
+- **LCS**: The longest common subsequence is an algorithmic task from BIG-Bench. This problem consists of pairs of strings as input, and language models are expected to predict the length of the longest common subsequence between them correctly.
+- **RutEdox**: Russian Detoxification Diagnostic (ruDetox) is a parallel text detoxification corpus based on the RuSSE-Detox competition. Text detoxification is the task of text style transfer - changing the style of the text while maintaining the original meaning and fluency. 
+- **ruOpenBookQA**: RuOpenBookQA is a QA dataset with multiple-choice elementary-level science questions, which probe understanding of 1k+ core science facts.
+
+The datasets are preprocessed to create prompt variations for each question.
+
+
 # Results & Conclusions
 The results of the Stability Coefficient calculations can be found in the docs file. Key insights include:
 
@@ -64,7 +75,10 @@ The results of the Stability Coefficient calculations can be found in the docs f
 
 # References
 - Sentence-Transformers: https://www.sbert.net/
+- MERA Benchmark: https://mera.a-ai.ru
 - Stability in NLP Models: Research papers and articles that delve deeper into understanding model stability across tasks.
+
+
 
 # Contributing
 Feel free to open issues or submit pull requests if you have suggestions for improvements or find bugs.
