@@ -18,12 +18,11 @@ $$
 $$
 
 where:
-$$
+
 - \(\text{similarity}_{ij}\) is the cosine similarity between the embeddings of response \(R_i\) and response \(R_j\).
 - \(n\) is the number of prompt variations for each question (in this case, 10).
 - The denominator \(n \cdot (n - 1)\) represents the number of unique pairs of responses.
 - The condition \(i \neq j\) ensures that a response is not compared with itself.
-$$
   
 ### Process
 
@@ -62,6 +61,10 @@ The results of the Stability Coefficient calculations can be found in the docs f
 - Which models showed the highest stability for each task.
 - Factors that had the greatest influence on model stability.
 - Recommendations for further improvements and experiments.
+
+# References
+- Sentence-Transformers: https://www.sbert.net/
+- Stability in NLP Models: Research papers and articles that delve deeper into understanding model stability across tasks.
 
 # Contributing
 Feel free to open issues or submit pull requests if you have suggestions for improvements or find bugs.
