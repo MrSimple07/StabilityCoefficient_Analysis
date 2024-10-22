@@ -11,10 +11,12 @@ The stability of each model is quantified using the **Stability Coefficient**, c
 
 ## Formula for Stability Coefficient
 
+## Stability Coefficient Formula
+
 The Stability Coefficient is calculated using the cosine similarities between embeddings of responses. The formula for the Stability Coefficient is:
 
 $$
-\text{Stability Coefficient} = \frac{\sum_{i \neq j} \text{similarity}_{ij} - n}{n \cdot (n - 1)}
+\text{Stability Coefficient} = \left( \frac{\sum_{i \neq j} \text{similarity}_{ij} - n}{n \cdot (n - 1)} \right) \cdot P
 $$
 
 where:
@@ -23,6 +25,16 @@ where:
 - \(n\) is the number of prompt variations for each question (in this case, 10).
 - The denominator \(n \cdot (n - 1)\) represents the number of unique pairs of responses.
 - The condition \(i \neq j\) ensures that a response is not compared with itself.
+- \(P\) is the answer probability calculated from the token probabilities in the response.
+
+### Explanation
+
+1. **Cosine Similarity Calculation**: The sum of cosine similarities is computed for all unique pairs of responses, ensuring that a response is not compared to itself.
+
+2. **Normalization**: The numerator is normalized by the number of unique pairs \(n \cdot (n - 1)\).
+
+3. **Incorporating Answer Probability**: The result is then multiplied by the probability \(P\) of the answer, which represents the likelihood of the response being correct based on the token probabilities.
+
   
 ### Process
 
@@ -50,7 +62,7 @@ The project evaluates four different models:
 
 1. Vikhr: A high-performance model tuned for general-purpose tasks.
 2. TinyLlama: A lightweight version of Llama, optimized for speed and efficiency.
-3. Llama2: A successor of Llama, focusing on improved accuracy.
+3. Llama3.2: A successor of Llama, focusing on improved accuracy.
 4. Mistral: A model known for its interpretability and token-level precision.
    
 Each model's response to prompt variations across the four tasks is analyzed in detail.
